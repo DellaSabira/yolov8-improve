@@ -13,7 +13,7 @@ from .tasks import (
     torch_safe_load,
     yaml_model_load,
 )
-
+from ultralytics.nn.modules.CBAM import CBAM
 __all__ = (
     "attempt_load_one_weight",
     "attempt_load_weights",

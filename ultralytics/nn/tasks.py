@@ -6,7 +6,7 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
-
+from ultralytics.nn.modules.CBAM import CBAM
 from ultralytics.nn.modules import (
     AIFI,
     C1,
@@ -884,6 +884,7 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             nn.ConvTranspose2d,
             DWConvTranspose2d,
             C3x,
+            CBAM,
             RepC3,
         }:
             c1, c2 = ch[f], args[0]
@@ -925,6 +926,11 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             args = [c1, c2, *args[1:]]
         elif m is CBFuse:
             c2 = ch[f[-1]]
+        elif m in {CBAM}:
+            c1, c2 = ch[f], args[0]
+            if c2 != nc:
+                c2 = make_divisible(min(c2, max_channels) * width, 8)
+            args = [c1, *args[1:]]
         else:
             c2 = ch[f]
 
