@@ -1,0 +1,32 @@
+# YOLOv8 and CBAM dependencies
+torch>=1.8.0
+torchvision>=0.9.0
+numpy>=1.19.5
+opencv-python>=4.5.1.48
+matplotlib>=3.3.4
+Pillow>=8.1.0
+tqdm>=4.56.0
+scipy>=1.6.0
+seaborn>=0.11.1
+
+# Additional utilities
+pyyaml>=5.3.1
+tensorboard>=2.4.1
+albumentations>=0.5.2
+pytest>=6.2.2
+Cython>=0.29.21
+pycocotools>=2.0.2
+omegaconf>=2.0.6
+loguru>=0.5.3
+
+# For CBAM implementation (if not included in YOLOv8)
+easydict>=1.9
+
+# Jupyter for interactive development
+jupyterlab>=3.0.7
+
+# Download YOLOv8 from the ultralytics repository
+#git+https://github.com/ultralytics/yolov8.git@main
+
+# Optionally, download a specific CBAM implementation if needed
+#git+https://github.com/Jongchan/attention-module.git
